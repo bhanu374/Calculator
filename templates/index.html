@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="{% static '/style.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/6.6.1/css/bootstrap.min.css" integrity="sha386-Vkoo8x6CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+ 
+    <script src="https://kit.fontawesome.com/dfde56656b.js" crossorigin="anonymous"></script>
+      <form method="post" action="calculator">
+        {% csrf_token %}
+      <div> 
+        <span id="ques">{{values}}</span>
+        <input type="text" class="text maincolor" name="values" id= "result" value={{result}}>
+        <input type="button" class="num maincolor" value="AC"  onclick="result.value=''" id="clear-button">
+      </div>
+      <input type="button"  class="num maincolor" value="9" name="9" onclick="insertTextInInputValue(9);"/>
+      <input type="button"  class="num maincolor" value="8" name="8" onclick="insertTextInInputValue(value);"/>
+      <input type="button"  class="num maincolor" value="7" name="7" onclick="insertTextInInputValue(7);"/>
+      <input type="button" class="num blue" value="+" name="+" onclick="insertTextInInputValue('+');"/><br>
+      <input type="button"  class="num maincolor" value="6" name="6" onclick="insertTextInInputValue(6);"/>
+        <input type="button"  class="num maincolor" value="5" name="5" onclick="insertTextInInputValue(5);"/>
+        <input type="button"  class="num maincolor" value="4" name="4" onclick="insertTextInInputValue(4);"/>
+        <input type="button" class="num per" value="-" name="-" onclick="insertTextInInputValue('-');"/><br>
+        <input type="button" class="num maincolor" value="3" name="3" onclick="insertTextInInputValue(3);"/>
+        <input type="button"  class="num maincolor" value="2" name="2" onclick="insertTextInInputValue(2);"/>
+        <input type="button"  class="num maincolor" value="1" name="1" onclick="insertTextInInputValue(1);"/>
+        <input type="button"  class="num red" value="x" name="x" onclick="insertTextInInputValue('x');"/><br>
+        <input type="button" class="num maincolor" value="." name="." onclick="insertTextInInputValue('.');"/>
+        <input type="button"  class="num maincolor"value="0" name="0" onclick="insertTextInInputValue(0);"/>
+        <input type="submit"class="num gre" value="=" name="="></input>
+        <input type="button"class="num org" value="/" name="/" onclick="insertTextInInputValue('/');"/>
+        </form>
+</body>
+<script>
+  function insertTextInInputValue(buttonValueIs){
+              var inputElementIs = document.getElementById("result");
+              inputElementIs.value =  inputElementIs.value + buttonValueIs;
+              $('#result').val(inputElementIs.value)
+        }
+</script>
+
+</html>
